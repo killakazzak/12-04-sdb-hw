@@ -20,6 +20,7 @@ INNER JOIN customer AS cst ON cst.store_id = st.store_id
 GROUP BY s.first_name, s.last_name, c.city
 HAVING COUNT(cst.customer_id) > 300;
 ```
+![image](https://github.com/killakazzak/12-04-sdb-hw/assets/32342205/a4a1bb1d-3afa-4030-a15b-b96e062a85b3)
 
 ### Задание 2
 
