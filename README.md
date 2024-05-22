@@ -10,7 +10,16 @@
 
 ### Решение Задание 1
 
-
+```sql
+SELECT s.first_name, s.last_name, c.city, COUNT(cst.customer_id) AS customer_count
+FROM staff AS s
+INNER JOIN store AS st ON s.store_id = st.store_id
+INNER JOIN address AS a ON st.address_id = a.address_id
+INNER JOIN city AS c ON a.city_id = c.city_id
+INNER JOIN customer AS cst ON cst.store_id = st.store_id
+GROUP BY s.first_name, s.last_name, c.city
+HAVING COUNT(cst.customer_id) > 300;
+```
 
 ### Задание 2
 
