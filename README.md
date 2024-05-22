@@ -45,6 +45,16 @@ WHERE length > (
 
 ### Решение Задание 3
 
+```sql
+SELECT MONTH(payment_date) AS month, SUM(amount) AS total_payment, COUNT(rental_id) AS rental_count
+FROM payment
+GROUP BY MONTH(payment_date)
+ORDER BY total_payment DESC
+LIMIT 1;
+```
+![image](https://github.com/killakazzak/12-04-sdb-hw/assets/32342205/3e99131a-0069-411a-8508-6909dc1acd7e)
+
+
 ## Дополнительные задания (со звёздочкой*)
 Эти задания дополнительные, то есть не обязательные к выполнению, и никак не повлияют на получение вами зачёта по этому домашнему заданию. Вы можете их выполнить, если хотите глубже шире разобраться в материале.
 
