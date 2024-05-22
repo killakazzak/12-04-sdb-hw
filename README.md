@@ -64,6 +64,17 @@ LIMIT 1;
 
 ### Решение Задание 4*
 
+```sql
+SELECT staff_id, COUNT(rental_id) AS total_sales,
+    CASE
+        WHEN COUNT(rental_id) > 8000 THEN 'Да'
+        ELSE 'Нет'
+    END AS Премия
+FROM rental
+GROUP BY staff_id;
+```
+![image](https://github.com/killakazzak/12-04-sdb-hw/assets/32342205/75844d2e-bbe6-467d-a229-d2529fee6180)
+
 ### Задание 5*
 
 Найдите фильмы, которые ни разу не брали в аренду.
