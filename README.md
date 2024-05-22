@@ -27,6 +27,17 @@ HAVING COUNT(cst.customer_id) > 300;
 
 ### Решение Задание 2
 
+```sql
+SELECT COUNT(*) AS film_count
+FROM film
+WHERE length > (
+    SELECT AVG(length)
+    FROM film
+);
+```
+![image](https://github.com/killakazzak/12-04-sdb-hw/assets/32342205/b03e809a-c07a-4e3b-914d-eb005ae19d06)
+
+
 ### Задание 3
 
 Получите информацию, за какой месяц была получена наибольшая сумма платежей, и добавьте информацию по количеству аренд за этот месяц.
