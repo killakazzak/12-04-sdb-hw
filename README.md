@@ -36,7 +36,7 @@ WHERE length > (
     FROM film
 );
 ```
-![image](https://github.com/killakazzak/12-04-sdb-hw/assets/32342205/b03e809a-c07a-4e3b-914d-eb005ae19d06)
+![image](https://github.com/killakazzak/12-04-sdb-hw/assets/32342205/a9ce1449-3bcc-44fd-a989-a62520fa60de)
 
 
 ### Задание 3
