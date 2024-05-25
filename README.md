@@ -46,13 +46,24 @@ WHERE length > (
 ### Решение Задание 3
 
 ```sql
-SELECT MONTH(payment_date) AS month, SUM(amount) AS total_payment, COUNT(rental_id) AS rental_count
-FROM payment
-GROUP BY MONTH(payment_date)
-ORDER BY total_payment DESC
-LIMIT 1;
+SELECT t.year, t.month, t.total_payment, t.rental_count
+FROM (
+    SELECT
+        YEAR(payment_date) AS year,
+        MONTH(payment_date) AS month,
+        SUM(amount) AS total_payment,
+        COUNT(rental_id) AS rental_count,
+        ROW_NUMBER() OVER (PARTITION BY YEAR(payment_date) ORDER BY COUNT(rental_id) DESC) AS row_num
+    FROM
+        payment
+    GROUP BY
+        YEAR(payment_date), MONTH(payment_date)
+) t
+WHERE t.row_num = 1;
+
 ```
-![image](https://github.com/killakazzak/12-04-sdb-hw/assets/32342205/3e99131a-0069-411a-8508-6909dc1acd7e)
+![image](https://github.com/killakazzak/12-04-sdb-hw/assets/32342205/f41b2dfc-85de-4fdd-ab56-59fc1a932907)
+
 
 
 ## Дополнительные задания (со звёздочкой*)
