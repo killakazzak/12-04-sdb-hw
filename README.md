@@ -49,20 +49,20 @@ WHERE length > (
 SELECT t.year, t.month, t.total_payment, t.rental_count
 FROM (
     SELECT
-        YEAR(payment_date) AS year,
-        MONTH(payment_date) AS month,
+        DATE_FORMAT(payment_date, '%Y') AS year,
+        DATE_FORMAT(payment_date, '%m') AS month,
         SUM(amount) AS total_payment,
         COUNT(rental_id) AS rental_count,
-        ROW_NUMBER() OVER (PARTITION BY YEAR(payment_date) ORDER BY COUNT(rental_id) DESC) AS row_num
+        ROW_NUMBER() OVER (PARTITION BY DATE_FORMAT(payment_date, '%Y') ORDER BY COUNT(rental_id) DESC) AS row_num
     FROM
         payment
     GROUP BY
-        YEAR(payment_date), MONTH(payment_date)
+        DATE_FORMAT(payment_date, '%Y'), DATE_FORMAT(payment_date, '%m')
 ) t
 WHERE t.row_num = 1;
 
 ```
-![image](https://github.com/killakazzak/12-04-sdb-hw/assets/32342205/f41b2dfc-85de-4fdd-ab56-59fc1a932907)
+![image](https://github.com/killakazzak/12-04-sdb-hw/assets/32342205/3a036392-7d08-41bb-a501-85c8f8808f58)
 
 
 
